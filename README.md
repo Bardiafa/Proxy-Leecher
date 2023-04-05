@@ -1,4 +1,4 @@
-# 🔎🌐 Proxy-Leecher
+# 🔎🌐 Fastest-Proxy-Leecher
 
 Proxy-Leecher is a Python script that scrapes and collects free HTTP/HTTPS and SOCKS4 proxies from multiple websites. 🕵️‍♂️ The scraped proxies are saved to a text file which can then be used with other tools.
 
