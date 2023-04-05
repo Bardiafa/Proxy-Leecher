@@ -1,0 +1,37 @@
+name: Proxy Leecher
+permissions: write-all
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+    - name: Run ProxyLeacher.py
+      working-directory: ./Path/To/ProxyLeecher/
+      run: python ProxyLeecher.py proxies.txt
+    - name: Commit and push files
+      uses: EndBug/add-and-commit@v7
+      with:
+        author_name: "Github Actions" 
+        author_email: "actions@github.com"
+        message: "✅ Updated Proxies ✅"
+        add: "."
+        push: "https://github.com/Bardiafa/Proxy-Leecher.git"
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
