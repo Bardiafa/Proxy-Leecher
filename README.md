@@ -26,6 +26,10 @@ Please note that using free public proxies comes with certain risks such as secu
 ## 📄 License
 This project is licensed under the [MIT License](https://github.com/Bardiafa/Proxy-Leecher/blob/main/LICENSE).
 
+## 👨‍💻 Author
+
+This script was created by [Me](https://github.com/Bardiafa) & [Hossein](https://github.com/hossein-mohseni) in Collaboration in our Wonderful Team [Mizegerd.tech](https://github.com/mizegerd-tech). If you have any questions or suggestions, please feel free to contact us in [Issues](https://github.com/Bardiafa/Proxy-Checker/issues) Part!
+
 -------
 
 So what are you waiting for? Start leeching those proxies today! 😎
