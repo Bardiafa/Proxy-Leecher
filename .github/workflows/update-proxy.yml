@@ -23,7 +23,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests
     - name: Run ProxyLeacher.py
-      working-directory: ./Path/To/ProxyLeecher/
       run: python ProxyLeecher.py proxies.txt
     - name: Commit and push files
       uses: EndBug/add-and-commit@v7
