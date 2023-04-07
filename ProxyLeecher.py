@@ -87,7 +87,7 @@ async def sorce7():
 async def sorce8():
     global proxys
     async with aiohttp.ClientSession() as session:
-        for page in range(200):
+        for page in range(500):
             async with session.get(f"https://www.freeproxy.world/?type=&anonymity=&country=&speed=&port=&page={page}") as response:
                 html = await response.text()
                 ip_pattern = r"<td class=\"show-ip-div\">\s*(?P<ip>(?:\d{1,3}\.){3}\d{1,3})\s*<\/td>"
@@ -102,7 +102,7 @@ async def sorce8():
 
 async def main():
     global proxys
-    with ThreadPoolExecutor(max_workers=8) as executor:
+    with ThreadPoolExecutor(max_workers=20) as executor:
         tasks = []
         tasks.append(asyncio.ensure_future(sorce1()))
         tasks.append(asyncio.ensure_future(sorce2()))
