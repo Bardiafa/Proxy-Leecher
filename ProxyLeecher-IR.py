@@ -63,7 +63,7 @@ async def sorce4():
 async def sorce5():
     global proxys
     async with aiohttp.ClientSession() as session:
-        for page in range(200):
+        for page in range(304):
             async with session.get(f"https://www.freeproxy.world/?type=&anonymity=&country=IR&speed=&port=&page={page}") as response:
                 html = await response.text()
                 ip_pattern = r"<td class=\"show-ip-div\">\s*(?P<ip>(?:\d{1,3}\.){3}\d{1,3})\s*<\/td>"
