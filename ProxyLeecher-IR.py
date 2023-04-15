@@ -12,7 +12,7 @@ async def sorce1():
     async with aiohttp.ClientSession() as session:
         async with session.get("http://free-proxy.cz/en/proxylist/country/IR/all/ping/all") as response:
             html = await response.text()
-        for tr in re.findall(r'<tr.*?>(.*?)</tr>', response, re.DOTALL):
+        for tr in re.findall(r'<tr.*?>(.*?)</tr>', html, re.DOTALL):
             ip_address_b64_match = re.search(r'Base64\.decode\("(.*?)"\)', tr)
             if ip_address_b64_match:
                 ip_address_b64 = ip_address_b64_match.group(1)
@@ -26,7 +26,7 @@ async def sorce2():
     async with aiohttp.ClientSession() as session:
         async with session.get("http://free-proxy.cz/en/proxylist/country/IR/all/ping/all/2") as response:
             html = await response.text()
-        for tr in re.findall(r'<tr.*?>(.*?)</tr>', response, re.DOTALL):
+        for tr in re.findall(r'<tr.*?>(.*?)</tr>', html, re.DOTALL):
             ip_address_b64_match = re.search(r'Base64\.decode\("(.*?)"\)', tr)
             if ip_address_b64_match:
                 ip_address_b64 = ip_address_b64_match.group(1)
@@ -40,7 +40,7 @@ async def sorce3():
     async with aiohttp.ClientSession() as session:
         async with session.get("http://free-proxy.cz/en/proxylist/country/IR/all/ping/all/3") as response:
             html = await response.text()
-        for tr in re.findall(r'<tr.*?>(.*?)</tr>', response, re.DOTALL):
+        for tr in re.findall(r'<tr.*?>(.*?)</tr>', html, re.DOTALL):
             ip_address_b64_match = re.search(r'Base64\.decode\("(.*?)"\)', tr)
             if ip_address_b64_match:
                 ip_address_b64 = ip_address_b64_match.group(1)
@@ -96,7 +96,7 @@ async def main():
 
 if __name__ == "__main__":
     pt = os.path.dirname(__file__)
-    good = os.path.join(pt, "IR.txt")
+    good = os.path.join(pt, "good.txt")
     asyncio.run(main())
     
     # save the results to the file
