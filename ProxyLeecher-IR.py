@@ -7,47 +7,47 @@ import base64
 
 proxys = []
 
-# async def sorce1():
-#     global proxys
-#     async with aiohttp.ClientSession() as session:
-#         async with session.get("http://free-proxy.cz/en/proxylist/country/IR/all/ping/all") as response:
-#             html = await response.text()
-#         for tr in re.findall(r'<tr.*?>(.*?)</tr>', response, re.DOTALL):
-#             ip_address_b64_match = re.search(r'Base64\.decode\("(.*?)"\)', tr)
-#             if ip_address_b64_match:
-#                 ip_address_b64 = ip_address_b64_match.group(1)
-#                 ip_address = base64.b64decode(ip_address_b64).decode('utf-8')
-#                 port = re.search(r'<span class="fport".*?>(.*?)</span>', tr).group(1)
-#                 proxys.append(f"{ip_address}:{port}")
-#     return "s1:ok"
+async def sorce1():
+    global proxys
+    async with aiohttp.ClientSession() as session:
+        async with session.get("http://free-proxy.cz/en/proxylist/country/IR/all/ping/all") as response:
+            html = await response.text()
+        for tr in re.findall(r'<tr.*?>(.*?)</tr>', response, re.DOTALL):
+            ip_address_b64_match = re.search(r'Base64\.decode\("(.*?)"\)', tr)
+            if ip_address_b64_match:
+                ip_address_b64 = ip_address_b64_match.group(1)
+                ip_address = base64.b64decode(ip_address_b64).decode('utf-8')
+                port = re.search(r'<span class="fport".*?>(.*?)</span>', tr).group(1)
+                proxys.append(f"{ip_address}:{port}")
+    return "s1:ok"
 
-# async def sorce2():
-#     global proxys
-#     async with aiohttp.ClientSession() as session:
-#         async with session.get("http://free-proxy.cz/en/proxylist/country/IR/all/ping/all/2") as response:
-#             html = await response.text()
-#         for tr in re.findall(r'<tr.*?>(.*?)</tr>', response, re.DOTALL):
-#             ip_address_b64_match = re.search(r'Base64\.decode\("(.*?)"\)', tr)
-#             if ip_address_b64_match:
-#                 ip_address_b64 = ip_address_b64_match.group(1)
-#                 ip_address = base64.b64decode(ip_address_b64).decode('utf-8')
-#                 port = re.search(r'<span class="fport".*?>(.*?)</span>', tr).group(1)
-#                 proxys.append(f"{ip_address}:{port}")
-#     return "s2:ok"
+async def sorce2():
+    global proxys
+    async with aiohttp.ClientSession() as session:
+        async with session.get("http://free-proxy.cz/en/proxylist/country/IR/all/ping/all/2") as response:
+            html = await response.text()
+        for tr in re.findall(r'<tr.*?>(.*?)</tr>', response, re.DOTALL):
+            ip_address_b64_match = re.search(r'Base64\.decode\("(.*?)"\)', tr)
+            if ip_address_b64_match:
+                ip_address_b64 = ip_address_b64_match.group(1)
+                ip_address = base64.b64decode(ip_address_b64).decode('utf-8')
+                port = re.search(r'<span class="fport".*?>(.*?)</span>', tr).group(1)
+                proxys.append(f"{ip_address}:{port}")
+    return "s2:ok"
 
-# async def sorce3():
-#     global proxys
-#     async with aiohttp.ClientSession() as session:
-#         async with session.get("http://free-proxy.cz/en/proxylist/country/IR/all/ping/all/3") as response:
-#             html = await response.text()
-#         for tr in re.findall(r'<tr.*?>(.*?)</tr>', response, re.DOTALL):
-#             ip_address_b64_match = re.search(r'Base64\.decode\("(.*?)"\)', tr)
-#             if ip_address_b64_match:
-#                 ip_address_b64 = ip_address_b64_match.group(1)
-#                 ip_address = base64.b64decode(ip_address_b64).decode('utf-8')
-#                 port = re.search(r'<span class="fport".*?>(.*?)</span>', tr).group(1)
-#                 proxys.append(f"{ip_address}:{port}")
-#     return "s3:ok"
+async def sorce3():
+    global proxys
+    async with aiohttp.ClientSession() as session:
+        async with session.get("http://free-proxy.cz/en/proxylist/country/IR/all/ping/all/3") as response:
+            html = await response.text()
+        for tr in re.findall(r'<tr.*?>(.*?)</tr>', response, re.DOTALL):
+            ip_address_b64_match = re.search(r'Base64\.decode\("(.*?)"\)', tr)
+            if ip_address_b64_match:
+                ip_address_b64 = ip_address_b64_match.group(1)
+                ip_address = base64.b64decode(ip_address_b64).decode('utf-8')
+                port = re.search(r'<span class="fport".*?>(.*?)</span>', tr).group(1)
+                proxys.append(f"{ip_address}:{port}")
+    return "s3:ok"
 
 async def sorce4():
     global proxys
@@ -80,9 +80,9 @@ async def main():
     global proxys
     with ThreadPoolExecutor(max_workers=8) as executor:
         tasks = []
-        # tasks.append(asyncio.ensure_future(sorce1()))
-        # tasks.append(asyncio.ensure_future(sorce2()))
-        # tasks.append(asyncio.ensure_future(sorce3()))
+        tasks.append(asyncio.ensure_future(sorce1()))
+        tasks.append(asyncio.ensure_future(sorce2()))
+        tasks.append(asyncio.ensure_future(sorce3()))
         tasks.append(asyncio.ensure_future(sorce4()))
         tasks.append(asyncio.ensure_future(sorce5()))
 
