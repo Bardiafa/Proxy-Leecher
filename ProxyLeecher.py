@@ -11,7 +11,7 @@ import os
 
 proxys = []
 
-async def sorce1():
+async def source1():
     global proxys
     async with aiohttp.ClientSession() as session:
         async with session.get("https://www.proxy-daily.com/") as response:
@@ -22,7 +22,7 @@ async def sorce1():
         proxys.extend(lines)
     return "s1:ok"
 
-async def sorce2():
+async def source2():
     global proxys
     async with aiohttp.ClientSession() as session:
         async with session.get("https://www.sslproxies.org/") as response:
@@ -33,7 +33,7 @@ async def sorce2():
             proxys.append(f"{line[0]}:{line[1]}")
     return "s2:ok"
 
-async def sorce3():
+async def source3():
     global proxys
     async with aiohttp.ClientSession() as session:
         async with session.get("https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all") as response:
@@ -42,7 +42,7 @@ async def sorce3():
             proxys.append(line)
     return "s3:ok"
 
-async def sorce4():
+async def source4():
     global proxys
     async with aiohttp.ClientSession() as session:
         async with session.get("https://hidemy.name/en/proxy-list/", headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"}) as response:
@@ -53,7 +53,7 @@ async def sorce4():
                 proxys.append(f"{line[0]}:{line[1]}")
     return "s4:ok"
 
-async def sorce5():
+async def source5():
     global proxys
     async with aiohttp.ClientSession() as session:
         async with session.get("https://www.proxy-list.download/HTTP", headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"}) as response:
@@ -63,7 +63,7 @@ async def sorce5():
                 proxys.append(f"{line[0]}:{line[1]}")
     return "s5:ok"
 
-async def sorce6():
+async def source6():
     global proxys
     async with aiohttp.ClientSession() as session:
         async with session.get("https://us-proxy.org/") as response:
@@ -74,7 +74,7 @@ async def sorce6():
                 proxys.append(f"{line[0]}:{line[1]}")
         return "s6:ok"
 
-async def sorce7():
+async def source7():
     global proxys
     async with aiohttp.ClientSession() as session:
         async with session.get("https://www.proxy-list.download/api/v2/get?l=en&t=https") as response:
@@ -84,7 +84,7 @@ async def sorce7():
                 proxys.append(f"{i['IP']}:{i['PORT']}")
     return "s7:ok"
 
-async def sorce8():
+async def source8():
     global proxys
     async with aiohttp.ClientSession() as session:
         for page in range(500):
@@ -100,18 +100,85 @@ async def sorce8():
 
     return "s8:ok"
 
+async def source9():
+    global proxys
+    async with aiohttp.ClientSession() as session:
+        async with session.get("https://raw.githubusercontent.com/mmpx12/proxy-list/master/http.txt") as response:
+            lines = await response.text()
+            for line in lines.split("\n"):
+                if line.strip():
+                    proxys.append(line.strip())
+    return "s9:ok"
+
+async def source10():
+    global proxys
+    async with aiohttp.ClientSession() as session:
+        async with session.get("https://raw.githubusercontent.com/sunny9577/proxy-scraper/master/proxies.txt") as response:
+            lines = await response.text()
+            for line in lines.split("\n"):
+                if line.strip():
+                    proxys.append(line.strip())
+    return "s10:ok"
+
+async def source11():
+    global proxys
+    async with aiohttp.ClientSession() as session:
+        async with session.get("https://raw.githubusercontent.com/caliphdev/Proxy-List/master/http.txt") as response:
+            lines = await response.text()
+            for line in lines.split("\n"):
+                if line.strip():
+                    proxys.append(line.strip())
+    return "s11:ok"
+
+async def source12():
+    global proxys
+    async with aiohttp.ClientSession() as session:
+        async with session.get("https://raw.githubusercontent.com/fahimscirex/proxybd/master/anonymous-proxylist/http.txt") as response:
+            lines = await response.text()
+            for line in lines.split("\n"):
+                if line.strip():
+                    proxys.append(line.strip())
+    return "s12:ok"
+
+
+async def source13():
+    global proxys
+    async with aiohttp.ClientSession() as session:
+        async with session.get("https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/http.txt") as response:
+            lines = await response.text()
+            for line in lines.split("\n"):
+                if line.strip():
+                    proxys.append(line.strip())
+    return "s13:ok"
+
+async def source14():
+    global proxys
+    async with aiohttp.ClientSession() as session:
+        async with session.get("https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt") as response:
+            lines = await response.text()
+            for line in lines.split("\n"):
+                if line.strip():
+                    proxys.append(line.strip())
+    return "s14:ok"
+
 async def main():
     global proxys
     with ThreadPoolExecutor(max_workers=20) as executor:
         tasks = []
-        tasks.append(asyncio.ensure_future(sorce1()))
-        tasks.append(asyncio.ensure_future(sorce2()))
-        tasks.append(asyncio.ensure_future(sorce3()))
-        tasks.append(asyncio.ensure_future(sorce4()))
-        tasks.append(asyncio.ensure_future(sorce5()))
-        tasks.append(asyncio.ensure_future(sorce6()))
-        tasks.append(asyncio.ensure_future(sorce7()))
-        tasks.append(asyncio.ensure_future(sorce8()))
+        tasks.append(asyncio.ensure_future(source1()))
+        tasks.append(asyncio.ensure_future(source2()))
+        tasks.append(asyncio.ensure_future(source3()))
+        tasks.append(asyncio.ensure_future(source4()))
+        tasks.append(asyncio.ensure_future(source5()))
+        tasks.append(asyncio.ensure_future(source6()))
+        tasks.append(asyncio.ensure_future(source7()))
+        tasks.append(asyncio.ensure_future(source8()))
+        tasks.append(asyncio.ensure_future(source9()))
+        tasks.append(asyncio.ensure_future(source10()))
+        tasks.append(asyncio.ensure_future(source11()))
+        tasks.append(asyncio.ensure_future(source12()))
+        tasks.append(asyncio.ensure_future(source13()))
+
 
         # Wait for all tasks to complete before continuing
         results = await asyncio.gather(*tasks)
