@@ -87,9 +87,12 @@ async def main():
         tasks.append(asyncio.ensure_future(sorce5()))
 
         # Wait for all tasks to complete before continuing
-        results = await asyncio.gather(*tasks)
+        results = await asyncio.gather(*tasks, return_exceptions=True)
         for result in results:
-            print(result)
+            if isinstance(result, Exception):
+                print("Error:", result)
+            else:
+                print(result)
 
     count = len(proxys)
     print(str(count) + " proxies scraped")
