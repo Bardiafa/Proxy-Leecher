@@ -202,7 +202,7 @@ async def source18():
                     proxys.append(line.strip())
     return "s18:ok"
 
- async def source19():
+async def source19():
     global proxys
     async with aiohttp.ClientSession() as session:
         async with session.get("https://raw.githubusercontent.com/ErcinDedeoglu/proxies/main/proxies/http.txt") as response:
@@ -211,6 +211,7 @@ async def source18():
                 if line.strip():
                     proxys.append(line.strip())
     return "s19:ok"
+
 async def main():
     global proxys
     with ThreadPoolExecutor(max_workers=20) as executor:
