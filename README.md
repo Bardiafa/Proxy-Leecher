@@ -9,17 +9,6 @@ Then, run the script using the following command:
 
 	python proxy-leecher.py
 
-Here, `output_file` is the path to the file where the scraped proxies will be saved. If not specified, the proxies will be saved to `proxies.txt` in the same directory as the script.
-
-You can also specify a list of URLs to scrape proxies from using the `--urls` option. By default, the script scrapes proxies from five popular proxy websites.
-
-## 📝 Example
-To scrape proxies from the default list of websites and save them to a file named `my_proxies.txt`, run the following command:
-
-	python proxy-leecher.py my_proxies.txt 
-
-The scraped proxies will be saved to `my_proxies.txt` in the same directory as the script.
-
 ## 🤝 Disclaimer
 Please note that using free public proxies comes with certain risks such as security vulnerabilities, slow speed, and unreliable connections. Use these proxies at your own risk and responsibility.
 
