@@ -7,7 +7,7 @@ To use Proxy-Leecher, you need to have Python 3 installed on your system. You al
 
 Then, run the script using the following command:
 
-	python proxy-leecher.py output_file [--urls url1 url2 ...] 
+	python proxy-leecher.py
 
 Here, `output_file` is the path to the file where the scraped proxies will be saved. If not specified, the proxies will be saved to `proxies.txt` in the same directory as the script.
 
