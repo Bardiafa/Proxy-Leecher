@@ -202,6 +202,15 @@ async def source18():
                     proxys.append(line.strip())
     return "s18:ok"
 
+ async def source19():
+    global proxys
+    async with aiohttp.ClientSession() as session:
+        async with session.get("https://raw.githubusercontent.com/ErcinDedeoglu/proxies/main/proxies/http.txt") as response:
+            lines = await response.text()
+            for line in lines.split("\n"):
+                if line.strip():
+                    proxys.append(line.strip())
+    return "s19:ok"
 async def main():
     global proxys
     with ThreadPoolExecutor(max_workers=20) as executor:
@@ -224,6 +233,8 @@ async def main():
         tasks.append(asyncio.ensure_future(source16()))
         tasks.append(asyncio.ensure_future(source17()))
         tasks.append(asyncio.ensure_future(source18()))
+        tasks.append(asyncio.ensure_future(source19()))
+
 
         # Wait for all tasks to complete before continuing
         results = await asyncio.gather(*tasks)
