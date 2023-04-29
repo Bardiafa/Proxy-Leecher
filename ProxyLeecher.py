@@ -15,7 +15,7 @@ async def source1():
         lines = str(html).split('</script><br><div class="centeredProxyList">Free Http/Https Proxy List:</div><br><div class="centeredProxyList freeProxyStyle">')[1].split('</div><br><br><divclass="centeredProxyList">Free Socks4 Proxy List:</div><br><div class="centeredProxyList freeProxyStyle">')[0]
         match = re.findall(r"\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}:[0-9]+\b",lines)
         lines = [line for line in match]
-        proxys.add(lines)
+        proxys.update(lines)
     return "s1:ok"
 
 async def source2():
