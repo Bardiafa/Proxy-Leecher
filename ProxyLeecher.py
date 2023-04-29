@@ -216,7 +216,7 @@ async def source16():
     global proxys
     try:
         async with aiohttp.ClientSession() as session:
-            async with session.get("https://github.com/Zaeem20/FREE_PROXIES_LIST/blob/master/http.txt") as response:
+            async with session.get("https://raw.githubusercontent.com/Zaeem20/FREE_PROXIES_LIST/master/http.txt") as response:
                 lines = await response.text()
                 for line in lines.split("\n"):
                     if line.strip():
