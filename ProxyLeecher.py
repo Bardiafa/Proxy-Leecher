@@ -290,6 +290,19 @@ async def source21():
     except:
         return "s21:fail"
     
+async def source22():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://raw.githubusercontent.com/saisuiu/Lionkings-Http-Proxys-Proxies/main/free.txt") as response:
+                lines = await response.text()
+                for line in lines.split("\n"):
+                    if line.strip():
+                        proxys.add(line.strip())
+        return "s22:ok"
+    except:
+        return "s22:fail"
+    
 async def main():
     global proxys
     with ThreadPoolExecutor(max_workers=20) as executor:
@@ -315,6 +328,7 @@ async def main():
         tasks.append(asyncio.ensure_future(source19()))
         tasks.append(asyncio.ensure_future(source20()))
         tasks.append(asyncio.ensure_future(source21()))
+        tasks.append(asyncio.ensure_future(source22()))
 
 
         # Wait for all tasks to complete before continuing
