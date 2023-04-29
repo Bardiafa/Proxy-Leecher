@@ -4,6 +4,7 @@ import re
 from concurrent.futures import ThreadPoolExecutor
 import os
 import base64
+import requests
 
 proxys = set()
 
@@ -230,6 +231,19 @@ async def source15():
         return "s15:ok"
     except:
         return "s15:fail"
+    
+async def source16():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=1&sort_by=lastChecked&sort_type=desc&country=IR", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s16:ok"
+    except:
+        return "s16:fail"
   
 async def main():
     global proxys
@@ -250,6 +264,7 @@ async def main():
         tasks.append(asyncio.ensure_future(source13()))
         tasks.append(asyncio.ensure_future(source14()))
         tasks.append(asyncio.ensure_future(source15()))
+        tasks.append(asyncio.ensure_future(source16()))
 
         # Wait for all tasks to complete before continuing
         results = await asyncio.gather(*tasks, return_exceptions=True)
