@@ -265,6 +265,18 @@ async def source19():
     except:
         return "s19:fail"
     
+async def source20():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://raw.githubusercontent.com/mertguvencli/http-proxy-list/main/proxy-list/data.txt") as response:
+                lines = await response.text()
+                for line in lines.split("\n"):
+                    if line.strip():
+                        proxys.add(line.strip())
+        return "s20:ok"
+    except:
+        return "s20:fail"
 async def main():
     global proxys
     with ThreadPoolExecutor(max_workers=20) as executor:
@@ -288,7 +300,7 @@ async def main():
         tasks.append(asyncio.ensure_future(source17()))
         tasks.append(asyncio.ensure_future(source18()))
         tasks.append(asyncio.ensure_future(source19()))
-
+        tasks.append(asyncio.ensure_future(source20()))
 
         # Wait for all tasks to complete before continuing
         results = await asyncio.gather(*tasks)
