@@ -215,6 +215,21 @@ async def source14():
         return "s14:ok"
     except:
         return "s14:fail"
+    
+async def source15():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(f"https://proxyranker.com/iran_islamic_republic_of/") as response:
+                html = await response.text()
+                pattern = r'<td>(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})<\/td><td><span title="Proxy port">(\d+)<\/span><\/td>'
+                matches = re.findall(pattern, html)
+
+                for match in matches:
+                    proxys.add(f'{match[0]}:{match[1]}')
+        return "s15:ok"
+    except:
+        return "s15:fail"
   
 async def main():
     global proxys
@@ -234,6 +249,7 @@ async def main():
         tasks.append(asyncio.ensure_future(source12()))
         tasks.append(asyncio.ensure_future(source13()))
         tasks.append(asyncio.ensure_future(source14()))
+        tasks.append(asyncio.ensure_future(source15()))
 
         # Wait for all tasks to complete before continuing
         results = await asyncio.gather(*tasks, return_exceptions=True)
