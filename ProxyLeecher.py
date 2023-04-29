@@ -277,6 +277,19 @@ async def source20():
         return "s20:ok"
     except:
         return "s20:fail"
+async def source21():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://raw.githubusercontent.com/roosterkid/openproxylist/main/HTTPS_RAW.txt") as response:
+                lines = await response.text()
+                for line in lines.split("\n"):
+                    if line.strip():
+                        proxys.add(line.strip())
+        return "s21:ok"
+    except:
+        return "s21:fail"
+    
 async def main():
     global proxys
     with ThreadPoolExecutor(max_workers=20) as executor:
@@ -301,6 +314,8 @@ async def main():
         tasks.append(asyncio.ensure_future(source18()))
         tasks.append(asyncio.ensure_future(source19()))
         tasks.append(asyncio.ensure_future(source20()))
+        tasks.append(asyncio.ensure_future(source21()))
+
 
         # Wait for all tasks to complete before continuing
         results = await asyncio.gather(*tasks)
