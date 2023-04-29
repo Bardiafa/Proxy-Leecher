@@ -1,15 +1,11 @@
 import asyncio
 import aiohttp
-import aiohttp_socks
 import re
-from bs4 import BeautifulSoup
-from typing import List
-import argparse
 import json
 from concurrent.futures import ThreadPoolExecutor
 import os
 
-proxys = []
+proxys = set()
 
 async def source1():
     global proxys
@@ -19,7 +15,7 @@ async def source1():
         lines = str(html).split('</script><br><div class="centeredProxyList">Free Http/Https Proxy List:</div><br><div class="centeredProxyList freeProxyStyle">')[1].split('</div><br><br><divclass="centeredProxyList">Free Socks4 Proxy List:</div><br><div class="centeredProxyList freeProxyStyle">')[0]
         match = re.findall(r"\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}:[0-9]+\b",lines)
         lines = [line for line in match]
-        proxys.extend(lines)
+        proxys.add(lines)
     return "s1:ok"
 
 async def source2():
@@ -30,7 +26,7 @@ async def source2():
         lines = str(html).split('<tbody>')[1].split('</tbody>')[0]
         match = re.findall(r"<tr><td>(?P<ip>\b(?:[0-9]{1,3}\.){3}[0-9]{1,3})<\/td><td>(?P<port>\d+)<\/td><td>\w+<\/td><td class='hm'>(?P<country>\w+|\w+ \w+)<\/td><td>",lines)
         for line in match:
-            proxys.append(f"{line[0]}:{line[1]}")
+            proxys.add(f"{line[0]}:{line[1]}")
     return "s2:ok"
 
 async def source3():
@@ -39,7 +35,7 @@ async def source3():
         async with session.get("https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all") as response:
             html = str(await response.text()).splitlines()
         for line in html:
-            proxys.append(line)
+            proxys.add(line)
     return "s3:ok"
 
 async def source4():
@@ -50,7 +46,7 @@ async def source4():
             html = html.decode('iso-8859-1')
             matches = re.findall(r"<tr><td>(?P<ip>\b(?:[0-9]{1,3}\.){3}[0-9]{1,3})<\/td><td>(?P<port>\d+)<\/td>" , html)
             for line in matches:
-                proxys.append(f"{line[0]}:{line[1]}")
+                proxys.add(f"{line[0]}:{line[1]}")
     return "s4:ok"
 
 async def source5():
@@ -60,7 +56,7 @@ async def source5():
             html = await response.text()
             matches = re.findall(r"<tr>\s+<td>\s+(?P<ip>.*?)\s+<\/td>\s+<td>\s+(?P<port>\d+)\s+<\/td>" , html)
             for line in matches:
-                proxys.append(f"{line[0]}:{line[1]}")
+                proxys.add(f"{line[0]}:{line[1]}")
     return "s5:ok"
 
 async def source6():
@@ -71,7 +67,7 @@ async def source6():
             lines = str(html).split('<tbody>')[1].split('</tbody>')[0]
             match = re.findall(r"<tr><td>(?P<ip>\b(?:[0-9]{1,3}\.){3}[0-9]{1,3})<\/td><td>(?P<port>\d+)<\/td><td>\w+<\/td><td class='hm'>(?P<country>\w+|\w+ \w+)<\/td><td>",lines)
             for line in match:
-                proxys.append(f"{line[0]}:{line[1]}")
+                proxys.add(f"{line[0]}:{line[1]}")
         return "s6:ok"
 
 async def source7():
@@ -81,7 +77,7 @@ async def source7():
             html = await response.text()
             lines = json.loads(html)['LISTA']
             for i in lines:
-                proxys.append(f"{i['IP']}:{i['PORT']}")
+                proxys.add(f"{i['IP']}:{i['PORT']}")
     return "s7:ok"
 
 async def source8():
@@ -96,7 +92,7 @@ async def source8():
                 ip_match = re.findall(ip_pattern, html)
                 port_match = re.findall(port_pattern, html)
                 for ip, port in zip(ip_match, port_match):
-                    proxys.append(f"{ip}:{port}")
+                    proxys.add(f"{ip}:{port}")
 
     return "s8:ok"
 
@@ -107,7 +103,7 @@ async def source9():
             lines = await response.text()
             for line in lines.split("\n"):
                 if line.strip():
-                    proxys.append(line.strip())
+                    proxys.add(line.strip())
     return "s9:ok"
 
 async def source10():
@@ -117,7 +113,7 @@ async def source10():
             lines = await response.text()
             for line in lines.split("\n"):
                 if line.strip():
-                    proxys.append(line.strip())
+                    proxys.add(line.strip())
     return "s10:ok"
 
 async def source11():
@@ -127,7 +123,7 @@ async def source11():
             lines = await response.text()
             for line in lines.split("\n"):
                 if line.strip():
-                    proxys.append(line.strip())
+                    proxys.add(line.strip())
     return "s11:ok"
 
 async def source12():
@@ -137,7 +133,7 @@ async def source12():
             lines = await response.text()
             for line in lines.split("\n"):
                 if line.strip():
-                    proxys.append(line.strip())
+                    proxys.add(line.strip())
     return "s12:ok"
 
 
@@ -148,7 +144,7 @@ async def source13():
             lines = await response.text()
             for line in lines.split("\n"):
                 if line.strip():
-                    proxys.append(line.strip())
+                    proxys.add(line.strip())
     return "s13:ok"
 
 async def source14():
@@ -158,7 +154,7 @@ async def source14():
             lines = await response.text()
             for line in lines.split("\n"):
                 if line.strip():
-                    proxys.append(line.strip())
+                    proxys.add(line.strip())
     return "s14:ok"
 
 
@@ -169,7 +165,7 @@ async def source15():
             lines = await response.text()
             for line in lines.split("\n"):
                 if line.strip():
-                    proxys.append(line.strip())
+                    proxys.add(line.strip())
     return "s15:ok"
 
 async def source16():
@@ -179,7 +175,7 @@ async def source16():
             lines = await response.text()
             for line in lines.split("\n"):
                 if line.strip():
-                    proxys.append(line.strip())
+                    proxys.add(line.strip())
     return "s16:ok"
 
 async def source17():
@@ -189,7 +185,7 @@ async def source17():
             lines = await response.text()
             for line in lines.split("\n"):
                 if line.strip():
-                    proxys.append(line.strip())
+                    proxys.add(line.strip())
     return "s17:ok"
 
 async def source18():
@@ -199,7 +195,7 @@ async def source18():
             lines = await response.text()
             for line in lines.split("\n"):
                 if line.strip():
-                    proxys.append(line.strip())
+                    proxys.add(line.strip())
     return "s18:ok"
 
 async def source19():
@@ -209,7 +205,7 @@ async def source19():
             lines = await response.text()
             for line in lines.split("\n"):
                 if line.strip():
-                    proxys.append(line.strip())
+                    proxys.add(line.strip())
     return "s19:ok"
 
 async def main():
