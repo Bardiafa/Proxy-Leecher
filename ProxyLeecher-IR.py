@@ -244,6 +244,19 @@ async def source16():
         return "s16:ok"
     except:
         return "s16:fail"
+
+async def source17():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=2&sort_by=lastChecked&sort_type=desc&country=IR", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s17:ok"
+    except:
+        return "s17:fail"
   
 async def main():
     global proxys
@@ -265,6 +278,7 @@ async def main():
         tasks.append(asyncio.ensure_future(source14()))
         tasks.append(asyncio.ensure_future(source15()))
         tasks.append(asyncio.ensure_future(source16()))
+        tasks.append(asyncio.ensure_future(source17()))
 
         # Wait for all tasks to complete before continuing
         results = await asyncio.gather(*tasks, return_exceptions=True)
