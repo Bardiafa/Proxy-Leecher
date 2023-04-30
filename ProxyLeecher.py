@@ -341,6 +341,243 @@ async def source25():
     except:
         return "s25:fail"
 
+async def source26():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=1&sort_by=lastChecked&sort_type=desc", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s26:ok"
+    except:
+        return "s26:fail"
+    
+async def source27():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=2&sort_by=lastChecked&sort_type=desc", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s27:ok"
+    except:
+        return "s27:fail"
+    
+
+async def source28():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=3&sort_by=lastChecked&sort_type=desc", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s28:ok"
+    except:
+        return "s28:fail"
+    
+async def source29():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=4&sort_by=lastChecked&sort_type=desc", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s29:ok"
+    except:
+        return "s29:fail"
+    
+async def source30():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=5&sort_by=lastChecked&sort_type=desc", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s30:ok"
+    except:
+        return "s30:fail"
+    
+async def source31():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=6&sort_by=lastChecked&sort_type=desc", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s31:ok"
+    except:
+        return "s31:fail"
+    
+async def source32():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=7&sort_by=lastChecked&sort_type=desc", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s32:ok"
+    except:
+        return "s32:fail"
+    
+async def source33():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=8&sort_by=lastChecked&sort_type=desc", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s33:ok"
+    except:
+        return "s33:fail"
+    
+async def source34():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=9&sort_by=lastChecked&sort_type=desc", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s34:ok"
+    except:
+        return "s34:fail"
+    
+async def source35():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=10&sort_by=lastChecked&sort_type=desc", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s35:ok"
+    except:
+        return "s35:fail"
+    
+async def source36():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=11&sort_by=lastChecked&sort_type=desc", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s36:ok"
+    except:
+        return "s36:fail"
+    
+async def source37():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=12&sort_by=lastChecked&sort_type=desc", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s37:ok"
+    except:
+        return "s37:fail"
+    
+async def source38():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=13&sort_by=lastChecked&sort_type=desc", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s38:ok"
+    except:
+        return "s38:fail"
+    
+async def source39():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=14&sort_by=lastChecked&sort_type=desc", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s39:ok"
+    except:
+        return "s39:fail"
+    
+async def source40():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=15&sort_by=lastChecked&sort_type=desc", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s40:ok"
+    except:
+        return "s40:fail"
+    
+async def source41():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=16&sort_by=lastChecked&sort_type=desc", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s41:ok"
+    except:
+        return "s41:fail"
+    
+async def source42():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=17&sort_by=lastChecked&sort_type=desc", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s42:ok"
+    except:
+        return "s42:fail"
+  
+async def source43():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"}
+            async with session.get(f"https://proxylist.geonode.com/api/proxy-list?limit=500&page=18&sort_by=lastChecked&sort_type=desc", headers=headers) as response:
+                data = await response.json()
+                for item in data["data"]:
+                    proxys.add(f"{item['ip']}:{item['port']}")
+        return "s43:ok"
+    except:
+        return "s43:fail"
+  
+
+
 async def main():
     global proxys
     with ThreadPoolExecutor(max_workers=20) as executor:
@@ -370,6 +607,24 @@ async def main():
         tasks.append(asyncio.ensure_future(source23()))
         tasks.append(asyncio.ensure_future(source24()))
         tasks.append(asyncio.ensure_future(source25()))
+        tasks.append(asyncio.ensure_future(source26()))
+        tasks.append(asyncio.ensure_future(source27()))
+        tasks.append(asyncio.ensure_future(source28()))
+        tasks.append(asyncio.ensure_future(source29()))
+        tasks.append(asyncio.ensure_future(source30()))
+        tasks.append(asyncio.ensure_future(source31()))
+        tasks.append(asyncio.ensure_future(source32()))
+        tasks.append(asyncio.ensure_future(source33()))
+        tasks.append(asyncio.ensure_future(source34()))
+        tasks.append(asyncio.ensure_future(source35()))
+        tasks.append(asyncio.ensure_future(source36()))
+        tasks.append(asyncio.ensure_future(source37()))
+        tasks.append(asyncio.ensure_future(source38()))
+        tasks.append(asyncio.ensure_future(source39()))
+        tasks.append(asyncio.ensure_future(source40()))
+        tasks.append(asyncio.ensure_future(source41()))
+        tasks.append(asyncio.ensure_future(source42()))
+        tasks.append(asyncio.ensure_future(source43()))
 
         # Wait for all tasks to complete before continuing
         results = await asyncio.gather(*tasks)
