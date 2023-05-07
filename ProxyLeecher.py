@@ -302,6 +302,7 @@ async def source22():
         return "s22:ok"
     except:
         return "s22:fail"
+    
 async def source23():
     global proxys
     try:
@@ -575,7 +576,19 @@ async def source43():
         return "s43:ok"
     except:
         return "s43:fail"
-  
+    
+async def source44():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://raw.githubusercontent.com/caliphdev/Proxy-List/master/http.txt") as response:
+                lines = await response.text()
+                for line in lines.split("\n"):
+                    if line.strip():
+                        proxys.add(line.strip())
+        return "s44:ok"
+    except:
+        return "s44:fail"
 
 
 async def main():
@@ -625,6 +638,7 @@ async def main():
         tasks.append(asyncio.ensure_future(source41()))
         tasks.append(asyncio.ensure_future(source42()))
         tasks.append(asyncio.ensure_future(source43()))
+        tasks.append(asyncio.ensure_future(source44()))
 
         # Wait for all tasks to complete before continuing
         results = await asyncio.gather(*tasks)
