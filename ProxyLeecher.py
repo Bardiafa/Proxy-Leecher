@@ -616,8 +616,21 @@ async def source46():
     except:
         return "s46:fail"
     
-    
-    
+
+async def source47():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://raw.githubusercontent.com/caliphdev/Proxy-List/master/http.txt") as response:
+                lines = await response.text()
+                for line in lines.split("\n"):
+                    if line.strip():
+                        proxys.add(line.strip())
+        return "s47:ok"
+    except:
+        return "s47:fail"
+
+
 async def main():
     global proxys
     with ThreadPoolExecutor(max_workers=20) as executor:
@@ -668,6 +681,7 @@ async def main():
         tasks.append(asyncio.ensure_future(source44()))
         tasks.append(asyncio.ensure_future(source45()))
         tasks.append(asyncio.ensure_future(source46()))
+        tasks.append(asyncio.ensure_future(source47()))
 
         # Wait for all tasks to complete before continuing
         results = await asyncio.gather(*tasks)
