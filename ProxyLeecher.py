@@ -642,6 +642,34 @@ async def source48():
         return "s48:ok"
     except:
         return "s48:fail"
+
+
+async def source49():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://raw.githubusercontent.com/ErcinDedeoglu/proxies/main/proxies/https.txt") as response:
+                lines = await response.text()
+                for line in lines.split("\n"):
+                    if line.strip():
+                        proxys.add(line.strip())
+        return "s49:ok"
+    except:
+        return "s49:fail"
+
+
+async def source50():
+    global proxys
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://raw.githubusercontent.com/ErcinDedeoglu/proxies/main/proxies/http.txt") as response:
+                lines = await response.text()
+                for line in lines.split("\n"):
+                    if line.strip():
+                        proxys.add(line.strip())
+        return "s50:ok"
+    except:
+        return "s50:fail"
         
 async def main():
     global proxys
@@ -695,6 +723,8 @@ async def main():
         tasks.append(asyncio.ensure_future(source46()))
         tasks.append(asyncio.ensure_future(source47()))
         tasks.append(asyncio.ensure_future(source48()))
+        tasks.append(asyncio.ensure_future(source49()))
+        tasks.append(asyncio.ensure_future(source50()))
 
 
         # Wait for all tasks to complete before continuing
